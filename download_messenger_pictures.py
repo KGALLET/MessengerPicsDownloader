@@ -5,7 +5,7 @@ from os.path import isdir, join
 from datetime import datetime
 
 from fbchat import Client
-from fbchat.models import ImageAttachment
+from fbchat.models import *
 import urllib3
 
 http = urllib3.PoolManager()
@@ -45,8 +45,9 @@ def download_pictures(user, password, thread_id, output_folder):
         with open(output_filename, "wb") as f:
             f.write(data)
 
-    client.send(Message(text="Synchronisation du cloud fini, nb photos telecharges: " + downloaded), thread_id=client.uid, thread_type=ThreadType.USER)
-    client.send(Message(text="Synchronisation du cloud fini, nb photos telecharges: " + downloaded), thread_id=thread_id, thread_type=ThreadType.USER)
+    client.send(Message(text="Synchronisation du cloud fini, nb photos telecharges: " + str(downloaded)), thread_id=client.uid, thread_type=ThreadType.USER)
+    client.send(Message(text="Synchronisation du cloud fini, nb photos telecharges: " + str(downloaded)), thread_id=thread_id, thread_type=ThreadType.USER)
+    client.logout()
 
 if __name__ == '__main__':
     from argparse import ArgumentParser
