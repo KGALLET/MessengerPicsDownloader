@@ -24,3 +24,6 @@ To use it in a crontab, for example :
 ```
 0 20 * * * sudo /usr/bin/python3.7 download_messenger_pictures.py <email> <password> <thread_id> --output <destination_folder> > <destination_folder>/logs.info 2>&1 & 
 ```
+
+TODO : 
+Do it for the vids
