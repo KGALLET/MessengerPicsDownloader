@@ -31,9 +31,10 @@ def download_pictures(user, password, thread_id, output_folder):
             continue
         if (im.original_extension) == 'gif':
             continue
-        output_filename = join(output_folder, im.uid + ".jpg")
-        if (isFileExist(output_filename)):
-            print("File %s already downloaded" % output_filename)
+        img_filename = im.uid + ".jpg"
+        output_filename = join(output_folder, img_filename)
+        if (isFileExist(img_filename)):
+            print("File %s already downloaded" % img_filename)
             continue
         url = client.fetchImageUrl(im.uid)
         data = http.request("GET", url=url, preload_content=False)
